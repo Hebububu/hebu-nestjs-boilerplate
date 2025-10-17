@@ -1,13 +1,18 @@
+// Prisma 클라이언트 정의
 generator client {
   provider = "prisma-client-js"
 }
 
+// 데이터베이스 소스 정의
+// 기본은 pgsql로 되어 있습니다. 필요시 변경하여서 사용하시면 됩니다.
+// 연결할 데이터베이스 주소는 .env 환경변수의 POSTGRES_URL을 사용합니다.
 datasource db {
   provider = "postgresql"
   url      = env("POSTGRES_URL")
 }
 
-// Example User model
+// 예시용 사용자 모델
+// 필요한 모델을 추가해서 사용하시면 됩니다.
 model User {
   id        String   @id @default(cuid())
   email     String   @unique
