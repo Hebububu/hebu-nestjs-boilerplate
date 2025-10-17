@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 async function main() {
   console.log('Seeding database...');
 
-  // Example seed data
+  // 예시용 User seed 입니다.
   const user = await prisma.user.upsert({
     where: { email: 'test@example.com' },
     update: {},
