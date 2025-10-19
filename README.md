@@ -46,6 +46,7 @@ cp .env.example .env
 ```
 
 **주요 환경변수:**
+
 - `NODE_ENV`: 실행 환경 (development, production, test)
 - `VERSION`: 애플리케이션 버전
 - `PORT`: 서버 포트
@@ -145,6 +146,7 @@ tsconfig.json에 다음과 같은 경로 별칭이 설정되어 있습니다:
 - `@swagger/*` → `src/swagger/*`
 
 **사용 예시:**
+
 ```typescript
 import { LoggerService } from '@logger/logger.service';
 import { PrismaService } from '@common/prisma/prisma.service';
@@ -162,6 +164,7 @@ Winston을 사용하여 로깅을 구현했습니다:
 - 로그는 `logs/` 디렉토리에 저장됩니다
 
 **사용 예시:**
+
 ```typescript
 constructor(private readonly logger: LoggerService) {}
 
@@ -178,6 +181,7 @@ this.logger.error('에러 메시지', 'trace', 'Context');
 - **도메인별 분리**: app, auth, database, swagger로 설정 분리
 
 **새 환경변수 추가 시:**
+
 1. `src/config/env/env.validation.ts`에 Joi 스키마 추가
 2. 해당 도메인 `*.config.ts`에 로드 로직 추가
 3. `*-config.service.ts`에 getter 메서드 추가
