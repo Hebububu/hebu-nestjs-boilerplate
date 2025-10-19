@@ -1,15 +1,16 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { ConfigModule as NestConfigModule } from '@nestjs/config';
-import appConfig from './app/app.config';
-import authConfig from './auth/auth.config';
-import databaseConfig from './database/database.config';
-import swaggerConfig from './swagger/swagger.config';
 import { AppConfigService } from './app/app-config.service';
+import appConfig from './app/app.config';
 import { AuthConfigService } from './auth/auth-config.service';
+import authConfig from './auth/auth.config';
 import { DatabaseConfigService } from './database/database-config.service';
-import { SwaggerConfigService } from './swagger/swagger-config.service';
+import databaseConfig from './database/database.config';
 import { envValidationSchema } from './env/env.validation';
+import { SwaggerConfigService } from './swagger/swagger-config.service';
+import swaggerConfig from './swagger/swagger.config';
 
+@Global()
 @Module({
   imports: [
     NestConfigModule.forRoot({
@@ -22,7 +23,17 @@ import { envValidationSchema } from './env/env.validation';
       },
     }),
   ],
-  providers: [AppConfigService, AuthConfigService, DatabaseConfigService, SwaggerConfigService],
-  exports: [AppConfigService, AuthConfigService, DatabaseConfigService, SwaggerConfigService],
+  providers: [
+    AppConfigService,
+    AuthConfigService,
+    DatabaseConfigService,
+    SwaggerConfigService,
+  ],
+  exports: [
+    AppConfigService,
+    AuthConfigService,
+    DatabaseConfigService,
+    SwaggerConfigService,
+  ],
 })
 export class ConfigModule {}
