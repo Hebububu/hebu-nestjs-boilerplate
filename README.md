@@ -1,5 +1,16 @@
 # NestJS Boilerplate
 
+![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=flat-square&logo=swagger&logoColor=black)
+![Jest](https://img.shields.io/badge/Jest-C21325?style=flat-square&logo=jest&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black)
+![License](https://img.shields.io/badge/License-UNLICENSED-red?style=flat-square)
+
 NestJS 기반의 백엔드 보일러플레이트입니다.
 
 ## 주요 기능
@@ -11,7 +22,7 @@ NestJS 기반의 백엔드 보일러플레이트입니다.
 - **Swagger**: API 문서 자동 생성 (모듈화)
 - **Health Check**: 헬스체크 엔드포인트
 - **Docker**: PostgreSQL 16 docker-compose 제공
-- **Path Alias**: `@/`, `@common/`, `@modules/`, `@config/`, `@logger/`, `@swagger/`
+- **Path Alias**: `@/`, `@prisma/`, `@common/`, `@modules/`, `@config/`, `@logger/`, `@swagger/`
 
 ## 프로젝트 구조
 
@@ -19,8 +30,8 @@ NestJS 기반의 백엔드 보일러플레이트입니다.
 src/
 ├── common/              # 공통 유틸리티
 │   ├── guards/         # Guards
-│   ├── interceptors/   # Interceptors
-│   └── prisma/         # Prisma 서비스
+│   └── interceptors/   # Interceptors
+├── prisma/             # Prisma ORM
 ├── config/             # 설정 모듈
 │   ├── app/           # 앱 설정
 │   ├── auth/          # 인증 설정
@@ -139,6 +150,7 @@ Swagger는 환경변수(`SWAGGER_ENABLED`)로 제어됩니다.
 tsconfig.json에 다음과 같은 경로 별칭이 설정되어 있습니다:
 
 - `@/*` → `src/*`
+- `@prisma/*` → `src/prisma/*`
 - `@common/*` → `src/common/*`
 - `@modules/*` → `src/modules/*`
 - `@config/*` → `src/config/*`
@@ -149,8 +161,9 @@ tsconfig.json에 다음과 같은 경로 별칭이 설정되어 있습니다:
 
 ```typescript
 import { LoggerService } from '@logger/logger.service';
-import { PrismaService } from '@common/prisma/prisma.service';
+import { PrismaService } from '@prisma/prisma.service';
 import { SwaggerService } from '@swagger/swagger.service';
+import { AppConfigService } from '@config/app/app-config.service';
 ```
 
 ## 로깅
