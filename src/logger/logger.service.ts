@@ -1,4 +1,9 @@
 import {
+  HttpErrorLog,
+  HttpRequestLog,
+  HttpResponseLog,
+} from '@/common/interfaces/httpLogging.interface';
+import {
   Inject,
   Injectable,
   LoggerService as NestLoggerService,
@@ -13,6 +18,7 @@ export class LoggerService implements NestLoggerService {
     private readonly logger: WinstonLogger,
   ) {}
 
+  // 일반 로그 //
   log(message: string, context?: string) {
     this.logger.info(message, { context });
   }
@@ -31,5 +37,13 @@ export class LoggerService implements NestLoggerService {
 
   verbose(message: string, context?: string) {
     this.logger.verbose(message, { context });
+  }
+
+  // HTTP 로깅 //
+  logHttp(logData: HttpRequestLog | HttpResponseLog) {
+    this.logger.info(logData);
+  }
+  errorHttp(errorLog: HttpErrorLog) {
+    this.logger.info(errorLog);
   }
 }
