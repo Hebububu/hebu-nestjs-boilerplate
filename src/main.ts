@@ -1,5 +1,5 @@
-import { SwaggerService } from '@/swagger/swagger.service';
-import { HttpLoggingInterceptor } from '@common/interceptors/http-logging.interceptor';
+import { SwaggerService } from '@swagger/swagger.service';
+import { HttpLoggingInterceptor } from '@common/interceptors/httpLogging.interceptor';
 import { AppConfigService } from '@config/app/app-config.service';
 import { LoggerService } from '@logger/logger.service';
 import { ValidationPipe } from '@nestjs/common';
